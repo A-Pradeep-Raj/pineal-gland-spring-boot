@@ -1,0 +1,101 @@
+buildscript {
+	ext {
+
+		projectversion = '1.0.0'
+		springBootVersion = '2.5.1'
+	}
+	repositories {
+		maven {
+			url "https://www.nexus.ford.com/repository/external-proxy-group/"
+		}
+		maven {
+			url "https://www.nexus.ford.com/repository/thirdparty"
+		}
+		maven {
+			url "https://www.nexus.ford.com/repository/public"
+		}
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.4.1'
+	}
+}
+
+group = 'com.web'
+version = '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'io.spring.dependency-management'
+
+
+
+sourceCompatibility = 11
+
+springBoot {
+    mainClassName = 'com.web.pinealgland.PinealglandApplication'
+}
+
+
+jar {
+	//mainClassName = 'com.web.pinealgland.PinealglandApplication'
+	manifest {
+        attributes(
+				'Main-Class': 'com.web.pinealgland.PinealglandApplication'
+                
+        )
+    }
+    
+}
+
+appengine {
+  deploy {
+    projectId = "pineal-gland-spring-boot"
+	version = "GCLOUD_CONFIG"
+  }
+}
+
+
+
+
+repositories {
+	maven {
+		url "https://www.nexus.ford.com/repository/external-proxy-group/"
+	}
+	maven {
+		url "https://www.nexus.ford.com/repository/thirdparty"
+	}
+	maven {
+		url "https://www.nexus.ford.com/repository/public"
+	}
+	mavenCentral()
+}
+
+ext {
+   springCloudVersion = 'Edgware.RELEASE'
+}
+
+dependencies {
+
+	
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.google.appengine:appengine:+'
+	//implementation 'org.springframework.cloud:spring-cloud-config-server'
+    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-sql-mysql:1.1.2.RELEASE'
+	implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.8'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+}
+
+
+// test {
+// 	useJUnitPlatform()
+// }
+
+
+
