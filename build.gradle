@@ -84,10 +84,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.h2database:h2'
 	implementation 'com.google.appengine:appengine:+'
 	//implementation 'org.springframework.cloud:spring-cloud-config-server'
-    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-sql-mysql:1.1.2.RELEASE'
-	implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.8'
+    //implementation 'org.springframework.cloud:spring-cloud-gcp-starter-sql-mysql:1.1.2.RELEASE'
+	//implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.8'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 }
