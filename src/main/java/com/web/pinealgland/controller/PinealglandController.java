@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class PinealglandController {
 
 	private static final String template = "Hello, %s!";
@@ -28,7 +28,7 @@ public class PinealglandController {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 
-    @GetMapping("/users")
+    @GetMapping("/chemistry")
     public List<User> getUsers() {
         return (List<User>) userRepository.findAll();
     }
